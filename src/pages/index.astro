@@ -1,17 +1,21 @@
 ---
-import Layout from "@/layouts/main.astro"
-import { Button } from "@/components/ui/button"
+import MainLayout from "@/layouts/main.astro"
+import Hero from "@/components/Hero.astro"
+import TrustedBy from "@/components/TrustedBy.astro"
+import Story from "@/components/Story.astro"
+import Impact from "@/components/Impact.astro"
+import Offer from "@/components/Offer.astro"
+import Contrast from "@/components/Contrast.astro"
+import FAQ from "@/components/FAQ.astro"
+import FinalCTA from "@/components/FinalCTA.astro"
 ---
-
-<Layout>
-  <div class="flex min-h-svh p-6">
-    <div class="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-      <div>
-        <h1 class="font-medium">Project ready!</h1>
-        <p>You may now add components and start building.</p>
-        <p>We've already added the button component for you.</p>
-        <Button client:load className="mt-2">Button</Button>
-      </div>
-    </div>
-  </div>
-</Layout>
+<MainLayout>
+  <Hero />
+  <TrustedBy />
+  <Story />
+  <Impact />
+  <Offer />
+  <Contrast />
+  <FAQ />
+  <FinalCTA />
+</MainLayout>

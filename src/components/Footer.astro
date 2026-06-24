@@ -1,0 +1,104 @@
+---
+const footer = {
+  col1: {
+    name: "Karol Modelski",
+    title: "Niezależny Partner Technologiczny",
+    description:
+      "Strategiczne tworzenie aplikacji internetowych dla małych i średnich firm. Biorę pełną odpowiedzialność za stabilność i bezpieczeństwo Twoich systemów. Ty skupiasz się na sprzedaży, ja zabezpieczam technologię.",
+  },
+  col2: {
+    title: "Kontakt",
+    address_street: "ul. Mieczysława Karłowicza 1 lok. 40",
+    address_city: "58-506 Jelenia Góra",
+    coverage: "Obszar obsługi: Warszawa i cała Polska",
+    phone: "+48 664 598 563",
+    email: "kontakt@karolmodelski.pl",
+  },
+  col3: {
+    title: "Rozwiązania dla firm",
+    navigation: [
+      { label: "Pierwsza wersja systemu", href: "/projektowanie-mvp" },
+      { label: "Modernizacja oprogramowania IT", href: "/modernizacja-oprogramowania-it" },
+      { label: "Aplikacje internetowe dla firm", href: "/aplikacje-internetowe-dla-firm" },
+    ],
+  },
+  col4: {
+    title: "Dlaczego Model Elite?",
+    navigation: [
+      { label: "Partner IT czy agencja programistyczna", href: "/architekt-it-vs-software-house" },
+      { label: "Bezpieczeństwo klasy bankowej", href: "/bezpieczenstwo-klasy-bankowej" },
+      { label: "Baza wiedzy", href: "/blog" },
+    ],
+    links: [
+      { label: "Odbierz Mapę Drogową Rozwoju IT", href: "https://www.karolmodelski.pl/#kontakt", isCta: true },
+    ],
+  },
+  bottom: {
+    copyright: "© 2026 Karol Modelski. Wszelkie prawa zastrzeżone.",
+    nip: "6112800950",
+    regon: "383132957",
+  },
+}
+---
+<footer class="bg-white border-t border-gray-200 mt-12">
+  <!-- 3-tier layout: Stacks on mobile, 2x2 grid on tablet (sm:), flat 4-col grid on desktop (lg:) -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-gray-100">
+    <!-- Col 1 -->
+    <div class="p-8 md:p-12 border-b sm:border-r lg:border-b-0 border-gray-100 flex flex-col justify-start">
+      <h3 class="text-xl font-bold tracking-tight text-gray-900 mb-2">{footer.col1.name}</h3>
+      <span class="text-xs font-mono text-blue-600 uppercase tracking-widest mb-4 block">{footer.col1.title}</span>
+      <p class="text-sm text-gray-500 leading-relaxed">{footer.col1.description}</p>
+    </div>
+
+    <!-- Col 2 -->
+    <div class="p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-start">
+      <h3 class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-6">{footer.col2.title}</h3>
+      <div class="text-sm text-gray-600 space-y-4 leading-relaxed">
+        <p>{footer.col2.address_street}<br/>{footer.col2.address_city}</p>
+        <p class="text-xs text-gray-400 font-medium">{footer.col2.coverage}</p>
+        <p class="mt-4">
+          <a href={`tel:${footer.col2.phone.replace(/\s+/g, '')}`} class="hover:text-blue-600 transition-colors block">{footer.col2.phone}</a>
+          <a href={`mailto:${footer.col2.email}`} class="hover:text-blue-600 transition-colors block mt-1">{footer.col2.email}</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Col 3 -->
+    <div class="p-8 md:p-12 border-b sm:border-b-0 sm:border-r border-gray-100 flex flex-col justify-start">
+      <h3 class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-6">{footer.col3.title}</h3>
+      <ul class="text-sm space-y-3">
+        {footer.col3.navigation.map(nav => (
+          <li>
+            <a href={nav.href} class="text-gray-600 hover:text-blue-600 transition-colors">{nav.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Col 4 -->
+    <div class="p-8 md:p-12 flex flex-col justify-start">
+      <h3 class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-6">{footer.col4.title}</h3>
+      <ul class="text-sm space-y-3 mb-6">
+        {footer.col4.navigation.map(nav => (
+          <li>
+            <a href={nav.href} class="text-gray-600 hover:text-blue-600 transition-colors">{nav.label}</a>
+          </li>
+        ))}
+      </ul>
+      {footer.col4.links.map(link => (
+        <a href={link.href} class="inline-block text-xs font-bold text-blue-600 font-mono uppercase tracking-wider hover:text-blue-700 transition-colors">
+          {link.label} &rarr;
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="max-w-7xl mx-auto px-8 md:px-12 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs text-gray-400 font-mono">
+    <div>{footer.bottom.copyright}</div>
+    <div class="flex gap-6">
+      <span>NIP: {footer.bottom.nip}</span>
+      <span>REGON: {footer.bottom.regon}</span>
+    </div>
+  </div>
+</footer>

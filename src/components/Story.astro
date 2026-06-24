@@ -1,0 +1,70 @@
+---
+const story = {
+  title_part1: "Dlaczego odszedłem z bankowości korporacyjnej,",
+  title_highlight: "aby pomagać małym i średnim firmom?",
+  customer_perspective_tag: "Moja Historia",
+  intro_text:
+    'Przez lata tworzyłem oprogramowanie, które zabezpiecza miliardy dolarów. Pracowałem dla gigantów – instytucji takich jak Citibank, BNP Paribas czy Silent Eight. Widziałem na własne oczy, jak rygorystyczne standardy bezpieczeństwa i wydajności chronią ogromne biznesy przed katastrofą. Przeczytaj, dlaczego <a href="/bezpieczenstwo-klasy-bankowej" class="text-blue-600 font-semibold hover:underline">bezpieczeństwo klasy bankowej</a> chroni Twoje zyski.',
+  problem_title: "Dlaczego tradycyjny model IT to pułapka dla mniejszych firm?",
+  problem_text:
+    'Większość dużych agencji IT kusi pięknymi prezentacjami, ale ostatecznie Twój projekt często trafia w ręce początkujących programistów, podczas gdy Ty płacisz za całą drabinkę pośredników – project managerów, accountów i zarząd.\n\nEfekt? Przepalony budżet, opóźnienia i skomplikowany kod, którego nikt nie rozumie. Dowiedz się, dlaczego warto wybrać <a href="/architekt-it-vs-software-house" class="text-blue-600 font-semibold hover:underline">niezależnego partnera technologicznego zamiast agencji programistycznej</a>.',
+  paradigm_tag: "Moja Misja",
+  paradigm_title: "System Enterprise dla każdego biznesu",
+  paradigm_text_1:
+    "Jako Twój Niezależny Partner Technologiczny, proponuję inną drogę. Widziałem od środka, jak buduje się systemy odporne na błędy, które zabezpieczają miliardy. Widziałem też, jak małe i średnie firmy tracą kapitał przez amatorskie wdrożenia. Postanowiłem przenieść ten rygor klasy enterprise wprost do Twojego biznesu. Bez głuchych telefonów i opłacania armii pośredników – pracujesz bezpośrednio ze mną.",
+  paradigm_text_2:
+    "Co więcej, włączając do mojego procesu nowoczesne narzędzia sztucznej inteligencji, drastycznie przyspieszam każdą fazę pracy. Dzięki temu wdrażamy w pełni funkcjonalną, pierwszą wersję systemu w zavedwie 30 dni – w czasie, gdy duże agencje dopiero kończą przygotowywać wyceny. Ty skupiasz się na sprzedaży i rozwoju, ja zabezpieczam technologię i pilnuję zwrotu z inwestycji (ROI).",
+}
+---
+<section class="py-28 px-6 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <!-- Left Column: Backstory & Problem (60%) -->
+    <div class="lg:col-span-7 flex flex-col justify-start">
+      <span class="text-blue-600 font-mono text-xs uppercase tracking-widest mb-4">{story.customer_perspective_tag}</span>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 mb-8 leading-tight">
+        {story.title_part1} <span class="block text-blue-600">{story.title_highlight}</span>
+      </h2>
+      
+      <div class="prose prose-lg text-gray-700 space-y-6">
+        <p class="text-xl leading-relaxed text-gray-900 font-medium" set:html={story.intro_text} />
+        
+        <!-- Toggle Button for Mobile Only -->
+        <div class="lg:hidden mt-6">
+          <button id="read-story-btn" class="flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors">
+            Czytaj całą historię
+            <svg class="h-5 w-5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"/></svg>
+          </button>
+        </div>
+
+        <div id="extended-story" class="hidden lg:block border-t border-gray-100 mt-8 lg:mt-8 pt-8 lg:pt-8">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">{story.problem_title}</h3>
+          <p class="leading-relaxed text-gray-600" set:html={story.problem_text.replace(/\n\n/g, '<br/><br/>')} />
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right Column: Mission Box (40%) -->
+    <div class="lg:col-span-5 flex flex-col justify-start">
+      <div class="bg-gray-50 border border-gray-200/60 p-8 md:p-10 rounded-none flex flex-col h-full justify-between">
+        <div>
+          <span class="text-blue-600 font-mono text-xs uppercase tracking-widest mb-4 block">{story.paradigm_tag}</span>
+          <h3 class="text-2xl font-bold tracking-tight text-gray-900 mb-6">{story.paradigm_title}</h3>
+          <div class="text-gray-600 space-y-6 text-sm md:text-base leading-relaxed">
+            <p>{story.paradigm_text_1}</p>
+            <p>{story.paradigm_text_2}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('read-story-btn');
+  const extended = document.getElementById('extended-story');
+
+  btn?.addEventListener('click', () => {
+    extended?.classList.remove('hidden');
+    btn.classList.add('hidden');
+  });
+</script>

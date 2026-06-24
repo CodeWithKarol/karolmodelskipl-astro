@@ -1,0 +1,110 @@
+---
+const faq = {
+  title: "Najczęściej Zadawane Pytania",
+  subtitle:
+    "Rozwiewam wątpliwości dotyczące budowy skalowalnych aplikacji internetowych.",
+  items: [
+    {
+      question:
+        "Czym jest aplikacja internetowa (webowa) i jak buduje przewagę biznesową firmy?",
+      answer:
+        "To zaawansowane narzędzie biznesowe, które zamiast generować koszty stałe, napędza konwersję i automatyzuje procesy. Rozważając to w kontekście sektora małych i średnich firm, nie mówimy o prostej stronie wizytówkowej, lecz o architekturze, która bezpośrednio skaluje zyski. Moje podejście do tworzenia rozwiązań internetowych eliminuje narzuty technologiczne. Projektuję ścieżki użytkownika w taki sposób, aby każdy moduł realizował konkretny cel biznesowy. Dedykowane aplikacje internetowe dla firm buduję w oparciu o uproszczoną strukturę kodu, co pozwala przedsiębiorstwom zyskać elastyczność i przewagę konkurencyjną.",
+    },
+    {
+      question:
+        "Jak wygląda projektowanie aplikacji internetowych bez ryzyka „głuchego telefonu”?",
+      answer:
+        "Większość agencji opiera proces o wielopoziomowe struktury i pośredników, co wydłuża czas i zniekształca Twoją wizję. U mnie projektowanie aplikacji internetowych opiera się na modelu bezpośredniego dostępu – rozmawiasz z autorem kodu. Etap ten obejmuje precyzyjne mapowanie celów biznesowych oraz projektowanie wydajnych ścieżek użytkownika. Wiedząc doskonale, jak tworzy się systemy na poziomie międzynarodowym, dbam o to, by oprogramowanie od pierwszej minuty było przygotowane na duże obciążenia. Przeglądając udane przykłady tworzenia aplikacji internetowych, kluczem do sukcesu jest zawsze praktyczne podejście inżynieryjne, a nie sztuczne pompowanie godzin pracy.",
+    },
+    {
+      question:
+        "W czym napisać aplikację webową, by uniknąć długu technologicznego?",
+      answer:
+        "Wybór technologii decyduje o tym, czy Twój system będzie inwestycją, czy kosztownym obciążeniem. Zamiast oferować tymczasowe rozwiązania, wdrażam technologie odporne na upływ czasu. Na warstwie wizualnej stawiam na ultra-wydajny ekosystem, który idealnie zarządza złożonymi operacjami. Logikę biznesową pod maską dopasowuję precyzyjnie do Twoich potrzeb, wykorzystując sprawdzone środowiska. Nowoczesne projektowanie w moim wykonaniu gwarantuje jakość kodu, która nie wymaga kosztownej przebudowy po kilku miesiącach.",
+    },
+    {
+      question:
+        "Ile kosztuje stworzenie aplikacji dla firmy w Warszawie i dlaczego nie warto przepłacać w agencjach?",
+      answer:
+        "To, ile kosztuje stworzenie aplikacji dla firmy, w tradycyjnej agencji zawiera ukryty podatek od pośrednictwa – opłacasz ich biura, marketing i marże menedżerskie. Wybierając niezależnego eksperta oferującego tworzenie aplikacji internetowych w Warszawie, inwestujesz 100% swojego budżetu w czystą architekturę i inżynierię klasy bankowej. Ceny za elastyczne wdrożenie pierwszej, działającej wersji systemu zaczynają się od ułamka kwot agencji, a produkt jest gotowy do uruchomienia sprzedaży znacznie szybciej. Dokładne określenie kosztów zawsze poprzedzam darmową diagnozą techniczną i stworzeniem spersonalizowanej Mapy Drogowej.",
+    },
+    {
+      question:
+        "Czy bezpieczne tworzenie aplikacji za darmo lub za pomocą AI (Chat GPT) jest możliwe w biznesie?",
+      answer:
+        "Kreatory oferujące tworzenie aplikacji za darmo lub obietnice, że sztuczna inteligencja stworzy system za nas, kuszą oszczędnościami, ale w świecie komercyjnym oznaczają gigantyczne ryzyko. Nowoczesne narzędzia są świetnym asystentem przy optymalizacji, jednak bezpieczne tworzenie zaawansowanej logiki biznesowej wymaga doświadczenia inżynieryjnego. Moje systemy przenoszą rygorystyczne standardy bezpieczeństwa danych z systemów bankowych (Citibank, BNP Paribas). Żaden darmowy program nie zastąpi audytu bezpieczeństwa, odporności na nagłe błędy ani bezinwazyjnej migracji na żywym organizmie.",
+    },
+    {
+      question:
+        "Dlaczego warto wybrać bezpośrednią współpracę z architektem w Warszawie zamiast software house’u?",
+      answer:
+        "Wybierając projektowanie aplikacji internetowych w Warszawie pod moim okiem, zyskujesz partnera technologicznego na miejscu, który bierze pełną, osobistą odpowiedzialność za Twój produkt. Tradycyjne agencje często delegują projekty w ręce początkujących pracowników. Ja gwarantuję, że Twój system tworzy wyłącznie doświadczony ekspert. Zlecając mi tworzenie systemów, Warszawa staje się punktem wyjścia dla rozwiązania, które łączy zwinność z niezawodnością klasy korporacyjnej. Zapewniam także stałą pomoc do aplikacji internetowych oraz ewolucyjną modernizację – wszystko to bez zatrzymywania Twojej bieżącej sprzedaży.",
+    },
+  ],
+}
+---
+<section class="py-28 px-6 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <!-- Left Column: Sticky Header (40%) -->
+    <div class="lg:col-span-5 flex flex-col justify-start">
+      <span class="text-blue-600 font-mono text-xs uppercase tracking-widest mb-4">Wsparcie i Wiedza</span>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-gray-900 mb-6 leading-tight">{faq.title}</h2>
+      <p class="text-lg text-gray-600 leading-relaxed">{faq.subtitle}</p>
+    </div>
+    
+    <!-- Right Column: Collapsible Accordion items (60%) -->
+    <div class="lg:col-span-7 border-t border-gray-200">
+      {faq.items.map((item, index) => (
+        <div class="border-b border-gray-200 faq-item">
+          <!-- Accordion Title Trigger -->
+          <button class="w-full flex items-center justify-between py-6 text-left group">
+            <span class="text-base md:text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors pr-4">{item.question}</span>
+            <div class="text-gray-400 group-hover:text-blue-600 transition-colors shrink-0">
+              <svg class="h-6 w-6 transform transition-transform duration-300 icon-plus" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+            </div>
+          </button>
+          
+          <!-- Collapsible Body (Hidden on load) -->
+          <div class="faq-answer hidden pb-6">
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll('.faq-item');
+
+  items.forEach(item => {
+    const btn = item.querySelector('button');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.icon-plus');
+
+    btn?.addEventListener('click', () => {
+      const isHidden = answer?.classList.contains('hidden');
+      
+      // Auto-Close: Close all other open items first
+      if (isHidden) {
+        items.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.querySelector('.faq-answer')?.classList.add('hidden');
+            const otherIcon = otherItem.querySelector('.icon-plus');
+            otherIcon?.classList.remove('rotate-45', 'text-blue-600');
+          }
+        });
+
+        // Expand clicked item
+        answer?.classList.remove('hidden');
+        icon?.classList.add('rotate-45', 'text-blue-600');
+      } else {
+        // Collapse clicked item
+        answer?.classList.add('hidden');
+        icon?.classList.remove('rotate-45', 'text-blue-600');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,133 @@
+---
+const contrast = {
+  title_part1: "Twoja firma zasługuje na eksperta IT,",
+  title_highlight: "nie na zwykłego wykonawcę zadań",
+  red_ocean_title: "Zwykły Wykonawca / Agencja IT",
+  blue_ocean_title: "Model Partnerski (Współpraca ze mną)",
+  comparisons: [
+    {
+      red: {
+        title: "Zamknięcie listy zadań",
+        desc: "Skupienie wyłącznie na dowiezieniu projektu i wystawieniu faktury za godziny, bez wnikania w zyskowność.",
+      },
+      blue: {
+        title: "Zwrot z inwestycji w oprogramowanie",
+        desc: "Dostarczenie realnego wyniku biznesowego. Moim celem jest to, aby system zaczął jak najszybciej na siebie zarabiać.",
+      },
+    },
+    {
+      red: {
+        title: "„Głuchy telefon” i asystenci",
+        desc: "Informacje gubią się podczas komunikacji przez licznych project managerów, handlowców i pośredników.",
+      },
+      blue: {
+        title: "Bezpośredni kontakt",
+        desc: "Stały i otwarty kontakt bezpośrednio ze mną jako osobą decyzyjną i głównym budowniczym systemu.",
+      },
+    },
+    {
+      red: {
+        title: "Finansowanie struktury agencji",
+        desc: "Duża część Twoich środków pokrywa koszty utrzymania pięknych biur, działów HR oraz marketingu agencji.",
+      },
+      blue: {
+        title: "100% inwestycji w Twój produkt",
+        desc: "Cały Twój budżet jest inwestowany bezpośrednio w jakość i wydajność Twojego własnego oprogramowania.",
+      },
+    },
+    {
+      red: {
+        title: "Droga rewolucja",
+        desc: "Przy każdym problemie agencja proponuje kosztowne wyrzucenie wszystkiego i napisanie kodu od nowa.",
+      },
+      blue: {
+        title: "Bezpieczna ewolucja",
+        desc: "Ewolucyjne, modułowe wprowadzanie zmian, które odbywa się bez przerw w działaniu firmy i sprzedaży.",
+      },
+    },
+  ],
+}
+---
+<section class="py-28 px-6 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="mb-12 text-left max-w-3xl">
+      <span class="text-blue-600 font-mono text-xs uppercase tracking-widest">Kluczowa Różnica</span>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 mt-4 leading-tight">
+        {contrast.title_part1} <span class="text-blue-600 block md:inline">{contrast.title_highlight}</span>
+      </h2>
+    </div>
+
+    <!-- Mobile-only Tabs -->
+    <div class="flex border border-gray-200 rounded-full p-1 mb-8 max-w-md md:hidden bg-gray-50/50">
+      <button id="tab-red-btn" class="flex-1 text-center py-2.5 px-4 text-sm font-medium rounded-full transition-all bg-white text-gray-800 shadow-sm">
+        Agencja IT
+      </button>
+      <button id="tab-blue-btn" class="flex-1 text-center py-2.5 px-4 text-sm font-medium rounded-full transition-all text-gray-500">
+        Model Partnerski
+      </button>
+    </div>
+    
+    <!-- Symmetrical Comparison Table -->
+    <div class="grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
+      <!-- Headers (Desktop only, hidden on mobile in favor of tabs) -->
+      <div class="hidden md:block p-10 border-b border-gray-200 border-r border-gray-200 bg-gray-50/50">
+        <h3 class="text-xl font-bold text-gray-400 font-mono uppercase tracking-wider">{contrast.red_ocean_title}</h3>
+      </div>
+      <div class="hidden md:block p-10 border-b border-gray-200 bg-blue-50/20">
+        <h3 class="text-xl font-bold text-blue-700 font-mono uppercase tracking-wider">{contrast.blue_ocean_title}</h3>
+      </div>
+      
+      <!-- Rows -->
+      {contrast.comparisons.map((row, index) => (
+        <>
+          <!-- Left Cell (Red) -->
+          <div class="red-cell p-8 md:p-10 border-b border-gray-200 md:border-r border-gray-200 flex flex-col justify-start">
+            <div class="text-xs font-mono text-gray-400 mb-2">0{index + 1}A</div>
+            <h4 class="text-lg md:text-xl font-bold text-gray-800 mb-3">{row.red.title}</h4>
+            <p class="text-sm md:text-base text-gray-500 leading-relaxed">{row.red.desc}</p>
+          </div>
+          
+          <!-- Right Cell (Blue) -->
+          <div class="blue-cell hidden md:flex p-8 md:p-10 border-b border-gray-200 bg-blue-50/5 flex-col justify-start">
+            <div class="text-xs font-mono text-blue-400 mb-2">0{index + 1}B</div>
+            <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-3">{row.blue.title}</h4>
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed">{row.blue.desc}</p>
+          </div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const redBtn = document.getElementById('tab-red-btn');
+  const blueBtn = document.getElementById('tab-blue-btn');
+  const redCells = document.querySelectorAll('.red-cell');
+  const blueCells = document.querySelectorAll('.blue-cell');
+
+  redBtn?.addEventListener('click', () => {
+    // Button styling
+    redBtn.classList.add('bg-white', 'text-gray-800', 'shadow-sm');
+    blueBtn?.classList.remove('bg-white', 'text-gray-800', 'shadow-sm');
+    blueBtn?.classList.add('text-gray-500');
+
+    // Show/hide cells
+    redCells.forEach(cell => cell.classList.remove('hidden'));
+    blueCells.forEach(cell => cell.classList.add('hidden'));
+  });
+
+  blueBtn?.addEventListener('click', () => {
+    // Button styling
+    blueBtn.classList.add('bg-white', 'text-gray-800', 'shadow-sm');
+    redBtn?.classList.remove('bg-white', 'text-gray-800', 'shadow-sm');
+    redBtn?.classList.add('text-gray-500');
+
+    // Show/hide cells
+    blueCells.forEach(cell => {
+      cell.classList.remove('hidden');
+      cell.classList.add('flex');
+    });
+    redCells.forEach(cell => cell.classList.add('hidden'));
+  });
+</script>

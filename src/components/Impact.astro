@@ -1,0 +1,88 @@
+---
+const impact = {
+  title: "Jaki wpływ na Twoje zyski mają dedykowane aplikacje internetowe?",
+  description:
+    "Nowoczesne oprogramowanie dla firm to nie koszt, lecz inwestycja. Zobacz, jak bezpośrednio eliminuję wąskie gardła w Twoim biznesie, optymalizując koszty i skalując sprzedaż.",
+  items: [
+    {
+      title: "Automatyzacja procesów i zwrot z IT",
+      description:
+        "Całkowicie eliminuję powtarzalne, ręczne zadania Twojego zespołu. Projektuję dedykowane narzędzia tak, aby pracownicy skupili się na czystej strategii generowania zysków.",
+    },
+    {
+      title: "Skokowa retencja i lojalność klientów",
+      description:
+        "Wdrażam intuicyjne platformy obsługi i panele zamówień, które skracają czas transakcji do minimum. Twoi klienci zyskują standard, dla którego porzucą konkurencję.",
+    },
+    {
+      title: "Bezwzględne bezpieczeństwo klasy bankowej",
+      description:
+        "Zyskujesz architekturę odporną na błędy i nagłe skoki ruchu. Przenoszę rygorystyczne standardy ochrony danych z systemów bankowych wprost do struktur Twojego biznesu.",
+    },
+  ],
+}
+---
+<section class="py-28 px-6 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <!-- Left Column: Title & Description (40%) -->
+    <div class="lg:col-span-5 flex flex-col justify-start">
+      <span class="text-blue-600 font-mono text-xs uppercase tracking-widest mb-4">Mierzalny Wpływ</span>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-gray-900 mb-6 leading-tight">{impact.title}</h2>
+      <p class="text-lg text-gray-600 leading-relaxed">{impact.description}</p>
+    </div>
+    
+    <!-- Right Column: Benefits List with Accordion logic on mobile -->
+    <div class="lg:col-span-7 space-y-6 lg:space-y-12">
+      {impact.items.map((item, index) => (
+        <div class={`pb-6 lg:pb-12 ${index !== 2 ? 'border-b border-gray-100' : ''} impact-item`}>
+          <!-- Accordion Header Button (Active only on mobile) -->
+          <button class="w-full flex items-center justify-between text-left group lg:pointer-events-none select-none lg:select-text">
+            <div class="flex gap-6 items-center">
+              <div class="text-xl md:text-2xl font-mono font-bold text-blue-600">0{index + 1}</div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-900 group-hover:text-blue-600 lg:group-hover:text-gray-900 transition-colors">{item.title}</h3>
+            </div>
+            <!-- Toggle icon visible only on mobile -->
+            <div class="lg:hidden text-gray-400 group-hover:text-blue-600 transition-colors">
+              <svg class="h-6 w-6 transform transition-transform duration-300 icon-plus" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+            </div>
+          </button>
+          
+          <!-- Collapsible Body -->
+          <div class="impact-desc hidden lg:block mt-4 lg:mt-6 pl-12">
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple toggle logic for accordions on mobile devices
+  const items = document.querySelectorAll('.impact-item');
+
+  items.forEach(item => {
+    const btn = item.querySelector('button');
+    const desc = item.querySelector('.impact-desc');
+    const icon = item.querySelector('.icon-plus');
+
+    btn?.addEventListener('click', () => {
+      // Toggle visibility if on mobile
+      if (window.innerWidth < 1024) {
+        const isHidden = desc?.classList.contains('hidden');
+        
+        if (isHidden) {
+          desc?.classList.remove('hidden');
+          icon?.classList.add('rotate-45');
+          icon?.classList.add('text-blue-600');
+        } else {
+          desc?.classList.add('hidden');
+          icon?.classList.remove('rotate-45');
+          icon?.classList.remove('text-blue-600');
+        }
+      }
+    });
+  });
+</script>

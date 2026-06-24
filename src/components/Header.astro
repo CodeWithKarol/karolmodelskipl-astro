@@ -1,0 +1,103 @@
+---
+const header = {
+  brand: { name: "Karol Modelski" },
+  cta: {
+    title: "Bezpłatna diagnoza",
+    href: "/#kontakt",
+    description: "Zarezerwuj termin na darmowy audyt.",
+  },
+  menu: {
+    mobile: {
+      title: "Nawigacja",
+      description: "Wybierz sekcję, do której chcesz przejść.",
+    },
+    oferta: {
+      title: "Oferta",
+      items: [
+        {
+          title: "Pierwsza wersja systemu",
+          href: "/projektowanie-mvp",
+          description: "Uruchomienie Twojego pomysłu w 30 dni i szybki start sprzedaży.",
+        },
+        {
+          title: "Aplikacje internetowe dla firm",
+          href: "/aplikacje-internetowe-dla-firm",
+          description: "Dedykowane rozwiązania automatyzujące pracę i zwiększające zyski.",
+        },
+        {
+          title: "Modernizacja oprogramowania",
+          href: "/modernizacja-oprogramowania-it",
+          description: "Usuwanie błędów i przyspieszanie systemów bez przestojów w sprzedaży.",
+        },
+      ],
+    },
+    blog: {
+      title: "Baza wiedzy",
+      href: "/blog",
+      description: "Blog i poradniki IT",
+    },
+  },
+}
+---
+<header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <a href="/" class="text-xl font-bold tracking-tighter">{header.brand.name}</a>
+    
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <div class="group relative">
+        <button class="text-sm font-medium hover:text-gray-600 transition-colors flex items-center gap-1">
+          {header.menu.oferta.title}
+        </button>
+        <div class="absolute left-0 top-full hidden w-80 bg-white shadow-xl border border-gray-100 p-4 group-hover:block rounded-lg">
+          {header.menu.oferta.items.map(item => (
+            <a href={item.href} class="block p-3 hover:bg-gray-50 rounded-md">
+              <div class="text-sm font-bold">{item.title}</div>
+              <div class="text-xs text-gray-500">{item.description}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+      <a href={header.menu.blog.href} class="text-sm font-medium hover:text-gray-600 transition-colors">{header.menu.blog.title}</a>
+      <a href={header.cta.href} class="rounded-full border border-black px-4 py-1.5 text-sm font-medium hover:bg-black hover:text-white transition-colors">
+        {header.cta.title}
+      </a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button id="menu-toggle" class="md:hidden p-2">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-[100] hidden bg-white p-6">
+  <div class="flex justify-between items-center mb-8">
+    <span class="text-lg font-bold">{header.menu.mobile.title}</span>
+    <button id="menu-close" class="p-2"><svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+  </div>
+  <p class="text-sm text-gray-500 mb-6">{header.menu.mobile.description}</p>
+  <div class="flex flex-col gap-8">
+    <div class="space-y-4">
+      <div class="font-bold text-lg">{header.menu.oferta.title}</div>
+      {header.menu.oferta.items.map(item => (
+        <a href={item.href} class="block border-l-2 border-black pl-4">
+          <div class="font-bold">{item.title}</div>
+          <div class="text-sm text-gray-600">{item.description}</div>
+        </a>
+      ))}
+    </div>
+    <a href={header.menu.blog.href} class="text-xl font-bold">{header.menu.blog.title}</a>
+    <a href={header.cta.href} class="text-xl font-bold">{header.cta.title}</a>
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const close = document.getElementById('menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => menu?.classList.remove('hidden'));
+  close?.addEventListener('click', () => menu?.classList.add('hidden'));
+</script>

@@ -1,0 +1,104 @@
+---
+const offer = {
+  title_part1: "Jak wspólnie zbudujemy",
+  title_highlight: "przewagę konkurencyjną",
+  title_part2: "Twojej firmy?",
+  subheading:
+    "Zamiast skupiać się na technicznych definicjach, zobaczmy, jak moje rozwiązania bezpośrednio przekładają się na ochronę i pomnażanie Twoich pieniędzy:",
+  cta: {
+    title: "Zobacz, jak krok po kroku projektuję dedykowane aplikacje internetowe dla firm",
+    href: "/aplikacje-internetowe-dla-firm",
+  },
+  stack: [
+    {
+      title: "Przestań zgadywać – zacznij zarabiać",
+      desc: 'Większość firm traci setki tysięcy na budowaniu funkcji, których nikt nie chce. Ja dostarczam Ci "bezpiecznik finansowy" w postaci pierwszej, uproszczonej wersji oprogramowania. Sprawdzamy Twój pomysł z rynkiem w rekordowym czasie, byś inwestował tylko w to, co realnie napędza sprzedaż. Zobacz, jak wdrażam <a href="/projektowanie-mvp" class="text-blue-600 font-semibold hover:underline">pierwszą wersję systemu</a> w 30 dni.',
+    },
+    {
+      title: "Modernizacja bez utraty ani jednej minuty sprzedaży",
+      desc: 'W biznesie każda minuta przestoju to realna strata w kasie. Moja metoda to chirurgia systemowa – unowocześniam Twój kod w tle, „na żywym organizmie”. Eliminujemy wąskie gardła i dług technologiczny, podczas gdy Twoi klienci płynnie finalizują zakupy. Dowiedz się więcej o ewolucyjnej <a href="/modernizacja-oprogramowania-it" class="text-blue-600 font-semibold hover:underline">modernizacji oprogramowania IT</a> w locie.',
+    },
+    {
+      title: "Partnerstwo strategiczne, które zamienia technologię w zysk",
+      desc: 'Nie jestem tylko deweloperem, który czeka na instrukcje. Jako Twój Partner Technologiczny, projektuję systemy tak, aby każda funkcjonalność wspierała psychologię sprzedaży i ścieżkę konwersji Twojego klienta. Sprawdź dedykowane <a href="/aplikacje-internetowe-dla-firm" class="text-blue-600 font-semibold hover:underline">aplikacje internetowe dla firm</a> o wydajności bankowej.',
+    },
+    {
+      title: "Prędkość, która zamienia odwiedzających w kupujących",
+      desc: "Każda sekunda opóźnienia to klienci uciekający do konkurencji. Moja inżynieria to wysoka wydajność kodu – systemy tak błyskawiczne, że użytkownik nie ma czasu się zawahać. Skracam czas ładowania do minimum, eliminując opór na ścieżce zakupowej. Mniej porzuconych koszyków, więcej transakcji, większy zwrot z każdej złotówki wydanej na marketing.",
+    },
+  ],
+}
+---
+<section class="py-28 px-6 bg-white border-t border-gray-100">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="mb-20 text-left max-w-3xl">
+      <span class="text-blue-600 font-mono text-xs uppercase tracking-widest">Nasza Współpraca</span>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 mt-4 mb-6 leading-tight">
+        {offer.title_part1} <span class="text-blue-600">{offer.title_highlight}</span> {offer.title_part2}
+      </h2>
+      <p class="text-lg text-gray-600 leading-relaxed">{offer.subheading}</p>
+    </div>
+    
+    <!-- 2x2 Grid with Elegant Dividers (with accordion behavior on mobile) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 border-t border-gray-200">
+      {offer.stack.map((item, index) => (
+        <div class={`pb-6 md:p-12 border-b border-gray-200 pt-6 md:pt-12 ${index % 2 === 0 ? 'md:border-r md:border-gray-200' : ''} offer-item`}>
+          <!-- Accordion Header (Active only on mobile) -->
+          <button class="w-full flex items-center justify-between text-left group md:pointer-events-none select-none md:select-text px-4 md:px-0">
+            <div>
+              <div class="text-xs font-mono text-gray-400 mb-2">0{index + 1}</div>
+              <h3 class="text-lg md:text-2xl font-bold tracking-tight text-gray-900 group-hover:text-blue-600 md:group-hover:text-gray-900 transition-colors">{item.title}</h3>
+            </div>
+            <!-- Toggle icon visible only on mobile -->
+            <div class="md:hidden text-gray-400 group-hover:text-blue-600 transition-colors">
+              <svg class="h-6 w-6 transform transition-transform duration-300 icon-plus" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+            </div>
+          </button>
+          
+          <!-- Collapsible Body -->
+          <div class="offer-desc hidden md:block mt-4 md:mt-6 px-4 md:px-0">
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed" set:html={item.desc} />
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Section CTA Button at the bottom -->
+    <div class="mt-16 flex justify-start md:justify-center">
+      <a href={offer.cta.href} class="inline-flex bg-blue-50 text-blue-700 border border-blue-100 px-6 py-4 text-sm md:text-base font-bold rounded-full hover:bg-blue-100 transition-colors text-center max-w-xl shadow-sm">
+        {offer.cta.title}
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple toggle logic for accordions on mobile devices
+  const items = document.querySelectorAll('.offer-item');
+
+  items.forEach(item => {
+    const btn = item.querySelector('button');
+    const desc = item.querySelector('.offer-desc');
+    const icon = item.querySelector('.icon-plus');
+
+    btn?.addEventListener('click', () => {
+      // Toggle visibility if on mobile
+      if (window.innerWidth < 768) {
+        const isHidden = desc?.classList.contains('hidden');
+        
+        if (isHidden) {
+          desc?.classList.remove('hidden');
+          icon?.classList.add('rotate-45');
+          icon?.classList.add('text-blue-600');
+        } else {
+          desc?.classList.add('hidden');
+          icon?.classList.remove('rotate-45');
+          icon?.classList.remove('text-blue-600');
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,103 @@
+---
+const cta = {
+  title_part1: "Zanim zainwestujesz w aplikację,",
+  title_highlight: "miej pewność, że to się opłaci.",
+  subtitle:
+    "Zamiast standardowej rozmowy handlowej, przygotowałem konkretny proces analityczny dla firm. Zarezerwuj termin i odbierz:",
+  meeting_intro:
+    "Wypełnij krótki formularz, wybierz termin i zgarnij darmowy pakiet doradczy. Co otrzymasz po spotkaniu?",
+  meeting_bullets_title:
+    "Bezpłatna Mapa Drogowa Rozwoju IT (Wartość: 600 zł)",
+  bullets: [
+    {
+      title: "30-minutowa diagnoza online",
+      desc: "Zlokalizujemy wąskie gardła w procesach Twojej firmy, które blokują zyski",
+      value: "Wartość: 300 zł"
+    },
+    {
+      title: "Indywidualny Plan Działania",
+      desc: "Otrzymasz najszybszą ścieżkę wdrożenia aplikacji dla firm w 30 dni",
+      value: "Wartość: 200 zł"
+    },
+    {
+      title: "Bankowy Test Bezpieczeństwa IT",
+      desc: "Weryfikacja pomysłów pod kątem rygorystycznych standardów sektora finansowego. Ochrona danych klientów i stabilność bez awarii",
+      value: "Wartość: 100 zł"
+    },
+  ],
+  button: "Odbierz Pakiet o Wartości 600 zł za Darmo",
+}
+---
+<section id="kontakt" class="py-28 px-6 bg-white border-t border-gray-100 scroll-mt-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <!-- Left Column: Copy & Value Bullets (60%) -->
+    <div class="lg:col-span-7 flex flex-col justify-start">
+      <span class="text-blue-600 font-mono text-xs uppercase tracking-widest mb-4">Bezpłatna Diagnoza</span>
+      <h2 class="text-3xl md:text-5xl font-bold tracking-tighter text-gray-900 mb-6 leading-tight">
+        {cta.title_part1} <span class="text-blue-600 block">{cta.title_highlight}</span>
+      </h2>
+      <p class="text-lg text-gray-600 leading-relaxed mb-10">{cta.subtitle}</p>
+      
+      <!-- Value Bullets List -->
+      <div class="space-y-8">
+        {cta.bullets.map((bullet, index) => (
+          <div class="flex gap-6 items-start">
+            <div class="text-xl font-mono font-bold text-blue-600 bg-blue-50 w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+              {index + 1}
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 mb-1 flex flex-wrap items-center gap-2">
+                {bullet.title}
+                <span class="text-xs font-mono bg-blue-100 text-blue-800 py-0.5 px-2.5 rounded-full">{bullet.value}</span>
+              </h3>
+              <p class="text-gray-600 text-sm md:text-base leading-relaxed">{bullet.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Right Column: Focus Action Box (40%) -->
+    <div class="lg:col-span-5 flex flex-col justify-start">
+      <div class="bg-blue-50/20 border border-blue-100 p-8 md:p-10 rounded-none flex flex-col h-full justify-between">
+        <div>
+          <span class="text-blue-600 font-mono text-xs uppercase tracking-widest mb-4 block">Pakiet Doradczy</span>
+          <h3 class="text-2xl font-bold tracking-tight text-gray-900 mb-4">{cta.meeting_bullets ? 'Sprawdź szczegóły' : cta.meeting_bullets_title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-8">{cta.meeting_intro}</p>
+        </div>
+        
+        <div>
+          <a href="/contact" class="w-full inline-block bg-blue-600 text-white px-6 py-4 text-base font-bold rounded-full hover:bg-blue-700 transition-colors text-center shadow-md">
+            {cta.button}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile-only Floating CTA -->
+<div id="mobile-sticky-cta" class="fixed bottom-6 left-6 right-6 z-50 md:hidden translate-y-32 opacity-0 transition-all duration-500">
+  <a href="#kontakt" class="w-full block bg-blue-600 text-white py-4 text-center text-sm font-bold rounded-full shadow-xl border border-blue-500">
+    {cta.button}
+  </a>
+</div>
+
+<script>
+  const stickyCta = document.getElementById('mobile-sticky-cta');
+  const kontaktSection = document.getElementById('kontakt');
+
+  window.addEventListener('scroll', () => {
+    if (!stickyCta || !kontaktSection) return;
+
+    const kontaktTop = kontaktSection.getBoundingClientRect().top;
+    const scrollPosition = window.scrollY;
+
+    // Show button after scrolling past Hero (500px), hide it once the user reaches the final CTA form/section itself
+    if (scrollPosition > 500 && kontaktTop > window.innerHeight - 100) {
+      stickyCta.classList.remove('translate-y-32', 'opacity-0');
+    } else {
+      stickyCta.classList.add('translate-y-32', 'opacity-0');
+    }
+  });
+</script>
